@@ -1,0 +1,18 @@
+<div class="gallery-upload" id="gallery-upload">
+
+        <form action="/gallery/upload/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="gallery-upload-fileform">
+                <div id="fileformlabel"></div>
+                <div class="selectbutton">...</div>
+                {{ form.source }}
+            </div>
+
+            {{ form.name }}
+            {{ form.description }}
+
+            <button class="gallery-upload-submit" type="submit">Upload</button>
+
+        </form>
+</div>

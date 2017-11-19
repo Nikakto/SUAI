@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if images.object_list|length %}
+        <div class="gallery-items">
+            {% for image in images %}
+                <div class="gallery-item">
+                    <a href="{{ image.source.url }}">
+                        <img class="gallery-item-preview" src="{{ image.source.url }}" />
+                    </a>
+                </div>
+            {% endfor %}
+
+            {% if request.user.is_authenticated %}
+            <div class="gallery-item">
+                <div class="gallery-item-add">
+                    <a class="gallery-item-upload" href="{% url 'gallery_upload' %}">+</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="gallery-pagination">
+
+            {% if images.has_previous %}
+                <a href="?page={{ 1 }}">1</a>
+                {% if images.number > 2 %}
+                    <a href="?page={{ images.previous_page_number }}">{{ images.previous_page_number }}</a>
+                {% endif %}
+            {% endif %}
+
+            <a class="gallery-pagination-current" href="?page={{ images.number }}">{{ images.number }}</a>
+
+            {% if images.has_next %}
+                {% if images.next_page_number < images.paginator.num_pages %}
+                    <a href="?page={{ images.next_page_number }}">{{ images.next_page_number }}</a>
+                {% endif %}
+                <a href="?page={{ images.paginator.num_pages }}">{{ images.paginator.num_pages }}</a>
+            {% endif %}
+
+        </div>
+
+    {% else %}
+        <p class="gallery-empty">Gallery is empty</p>
+    {% endif %}
+
+{% endblock %}

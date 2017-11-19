@@ -1,0 +1,32 @@
+<div class="news" id="news">
+
+    {% if context.request.user.is_authenticated %}
+
+        <button class="news-button" id="button_create" type="button" onclick="news_addform_show()">Add news</button>
+
+        <div class="news-add" style="display: None">
+            <form action="/news/" method="post">
+
+                {% csrf_token %}
+
+                {{ form }}
+
+                <button class="news-button" id="button_submit" type="submit">Public</button>
+                <button class="news-button" id="button_close" type="button" onclick="news_addform_close()">Close</button>
+
+            </form>
+        </div>
+
+    {% endif %}
+
+    {% for post in news %}
+
+        <div class="news-post">
+            <p id="news-post-title">{{ post.title }}</p>
+            <p id="news-post-content">{{ post.content }}</p>
+            <p id="news-post-info">{{ post.user.username }} ({{ post.date.date }})</p>
+        </div>
+
+    {% endfor %}
+
+</div>

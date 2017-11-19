@@ -1,0 +1,22 @@
+<div class="auth" id="auth">
+    {% if request.user.is_authenticated %}
+        <p>Welcome to home, {{ request.user }}</p>
+        <form action="/logout/" method="post">
+            {% csrf_token %}
+            <button class="auth-button" type="submit">Logout</button>
+        </form>
+    {% else %}
+        <form action="/signin/" method="post">
+        
+            {% csrf_token %}
+
+            <input class="auth-input-string" id="auth-login" name="username" type="text"  minlength="3" placeholder="Login"/>
+            <input class="auth-input-string" id="auth-password" name="password" type="password"  minlength="6" placeholder="Password"/>
+            
+            <button class="auth-button" id="button_submit" type="submit">Sign in</button>
+            <button class="auth-button" type="button" onclick="location.href='{% url 'register' %}'">Sign up</button>
+        
+        </form>
+    {% endif %}
+</div>
+

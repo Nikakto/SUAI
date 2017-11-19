@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="converter">
+        <input class="converter-input" id="converter-unit-from-value" type="text" minlength="1" pattern="\d+(\.\d*)?([eE][-+]?\d{1,})?"/>
+        <select class="converter-select" id="converter-unit-from">
+            {% for unit in units %}
+                <option value="{{ unit.meters }}">{{ unit.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <p class="converter-text-to">to</p>
+        
+        <input class="converter-input" id="converter-unit-to-value" type="text" minlength="1" pattern="\d+(\.\d*)?([eE][-+]?\d{1,})?"/>
+        <select class="converter-select" id="converter-unit-to">
+            {% for unit in units %}
+                <option value="{{ unit.meters }}">{{ unit.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <br>
+        <button class="converter-button" id="converter-button" onclick="convert()">Convert</button>
+        
+    </div>
+
+{% endblock %}
