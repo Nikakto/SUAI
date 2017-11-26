@@ -1,30 +1,30 @@
 <div class="signup">
     <form action="/signup/" method="post">
-        <p class="signup-text">Who are you?</p>
+        <p class="signup-text">Создание аккаунта</p>
 
         {% csrf_token %}
 
         {% if form.errors.username %}
             <label class="input-error" for="signup-login" onmouseover="this.remove()">{{ form.errors.username }}</label>
         {% endif %}
-        <input class="signup-input-string" id="signup-login" name="username" type="text" placeholder="Login" value="{{ form.data.username }}"/>
+        <input class="signup-input-string" id="signup-login" name="username" type="text" placeholder="Войти" value="{{ form.data.username }}"/>
 
         {% if form.errors.password %}
             <label class="input-error" for="signup-password" onmouseover="this.remove()">{{ form.errors.password }}</label>
         {% endif %}
-        <input class="signup-input-string" id="signup-password" name="password" type="password" placeholder="Password" value="{{ form.data.password }}"/>
+        <input class="signup-input-string" id="signup-password" name="password" type="password" placeholder="Пароль" value="{{ form.data.password }}"/>
 
         {% if form.errors.password_again %}
             <label class="input-error" for="signup-password-again" onmouseover="this.remove()">{{ form.errors.password_again }}</label>
         {% endif %}
-        <input class="signup-input-string" id="signup-password-again" name="password_again" type="password" minlength="6" placeholder="Password again" value="{{ form.data.password_again }}"/>
+        <input class="signup-input-string" id="signup-password-again" name="password_again" type="password" minlength="6" placeholder="Пароль еще раз" value="{{ form.data.password_again }}"/>
 
         {% if form.errors.email %}
             <label class="input-error" for="signup-mail" onmouseover="this.remove()">{{ form.errors.email }}</label>
         {% endif %}
-        <input class="signup-input-string" id="signup-mail" name="email" type="text" placeholder="Your e-mail" value="{{ form.data.email }}"/>
+        <input class="signup-input-string" id="signup-mail" name="email" type="text" placeholder="Электронный адрес" value="{{ form.data.email }}"/>
         
-        <button class="signup-button" type="submit">Sign up</button>
-        
+        <button class="signup-button" type="submit">Зарегистрироваться</button>
+
     </form>
 </div>

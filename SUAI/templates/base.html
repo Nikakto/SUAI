@@ -5,24 +5,28 @@
 <html>
 
     <head>
-        <link rel="shortcut icon" href="/static/images/icon.png" type="image/png">
+        <link rel="shortcut icon" href="/static/images/logo.png" type="image/png">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <script type="text/javascript" src="/static/js/main.js"></script>
         <link type="text/css" rel="stylesheet" href="/static/css/main.css">
-        <title>Look up space</title>
+        <title>Собачки.ру</title>
     </head>
 
     <body>
     
     <header>
         <div class="header-container">
-            Look up space.
-            <img class="image-logo" src="/static/images/icon.png" alt="Vyacheslav Batunov.">
-            {% include "menu.html" %}
+            <img class="image-logo-left" src="/static/images/logo.png">
+            <img class="image-logo-right" src="/static/images/logo.png">
         </div>
     </header>
 
     <div class="page_content">
+
+        <div class="content-right">
+            {% include "menu.html" %}
+            {% include "auth.html" %}
+        </div>
 
         {% if 'signup' in request.path %}
             {% include "signup.html" %}
@@ -36,17 +40,12 @@
                 {% endblock %}
             </div>
 
-            <div class="content-right">
-                {% include "auth.html" %}
-                {% news_block %}
-            </div>
-
         {% endif %}
 
     </div>
 
     <footer>
-        SUIA. 2017. 4713M. Vyacheslav Batunov.
+        Любите собак и они будут любить Вас. Тимофеева Елена.
     </footer>
         
     </body>

@@ -2,8 +2,9 @@
 
 {% block content %}
 
-    {% if images.object_list|length %}
-        <div class="gallery-items">
+    <div class="gallery-items">
+        {% if images.object_list|length %}
+
             {% for image in images %}
                 <div class="gallery-item">
                     <a href="{{ image.source.url }}">
@@ -11,14 +12,15 @@
                     </a>
                 </div>
             {% endfor %}
+        {% endif %}
 
-            {% if request.user.is_authenticated %}
-            <div class="gallery-item">
-                <div class="gallery-item-add">
-                    <a class="gallery-item-upload" href="{% url 'gallery_upload' %}">+</a>
-                </div>
+        {% if request.user.is_authenticated %}
+        <div class="gallery-item">
+            <div class="gallery-item-add">
+                <a class="gallery-item-upload" href="{% url 'gallery_upload' %}">+</a>
             </div>
-            {% endif %}
+        </div>
+        {% endif %}
         </div>
 
         <div class="gallery-pagination">
@@ -40,9 +42,5 @@
             {% endif %}
 
         </div>
-
-    {% else %}
-        <p class="gallery-empty">Gallery is empty</p>
-    {% endif %}
 
 {% endblock %}

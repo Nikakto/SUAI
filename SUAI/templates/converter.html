@@ -3,25 +3,17 @@
 {% block content %}
 
     <div class="converter">
+
+        <p class="about-p">Давайте рассчитаем, сколько Вам лет по собачьим годам.
+        <p class="about-p">Введите, поэалуйста, свой возраст
+
         <input class="converter-input" id="converter-unit-from-value" type="text" minlength="1" pattern="\d+(\.\d*)?([eE][-+]?\d{1,})?"/>
-        <select class="converter-select" id="converter-unit-from">
-            {% for unit in units %}
-                <option value="{{ unit.meters }}">{{ unit.name }}</option>
-            {% endfor %}
-        </select>
-        
-        <p class="converter-text-to">to</p>
-        
-        <input class="converter-input" id="converter-unit-to-value" type="text" minlength="1" pattern="\d+(\.\d*)?([eE][-+]?\d{1,})?"/>
-        <select class="converter-select" id="converter-unit-to">
-            {% for unit in units %}
-                <option value="{{ unit.meters }}">{{ unit.name }}</option>
-            {% endfor %}
-        </select>
-        
+
+        <p class="about-p">Давайте рассчитаем, сколько Вам лет по собачьим годам.
         <br>
         <button class="converter-button" id="converter-button" onclick="convert()">Convert</button>
-        
+        <p id="calc_result"></p>
+
     </div>
 
 {% endblock %}
