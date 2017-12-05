@@ -32,6 +32,10 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^news/$', views.news, name='news'),
     url(r'^signin/$', views.user_logining, name='logining'),
+
+    url(r'^user/login/$', views.ajax_login, name='ajax_login'),
+    url(r'^user/logout/$', views.ajax_logout, name='ajax_logout'),
+
     url(r'^signup/$', views.user_register, name='register'),
 ]
 

@@ -130,15 +130,32 @@ header  {
 .auth {
     background-color: rgba(0, 0, 0, 0.75);
     color: rgb(225, 225, 225);
-    padding-bottom: 20px;
+    height: 160px;
+    position: relative;
     text-align: center;
     width: 230px;
 }
 
-.auth > p {
-    font-size: 20px;
-    margin: 0;
-    padding: 20px;
+.auth-input {
+    padding-top: 10px;
+    position: relative;
+}
+
+.auth-input > #auth-input-error {
+    background-color: rgba(255, 0, 0, 0.65);
+    cursor: pointer;
+    display: table;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.auth-input > #auth-input-error > span {
+    color: white;
+    display: table-cell;
+    font-size: 25px;
+    vertical-align: middle;
 }
 
 .auth-label {
@@ -484,7 +501,7 @@ header  {
 
 .page_content {
     display: grid;
-    grid-template-columns: auto max-content;
+    grid-template-columns: auto 270px;
     height: 100%;
     position: relative;
 }

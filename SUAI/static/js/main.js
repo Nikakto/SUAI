@@ -1,3 +1,56 @@
+$(document).ready(function() {
+    $('#auth-input-error').fadeOut(0);
+});
+
+function ajax_login() {
+
+    var data = {
+        'login': $('#auth-login')[0].value,
+        'password': $('#auth-password')[0].value
+    };
+
+    console.log(data);
+
+    $.ajax({
+
+        data: data,
+        dataType: "json",
+        url: '/user/login/',
+
+        success: function(result) {
+            if (result['response'] == 'success') {
+                $('.auth').html(result['html'])
+            }
+            else {
+                auth_input_error_toogle();
+            }
+        }
+
+    });
+}
+
+function ajax_logout() {
+
+    $.ajax({
+
+        url: '/user/logout/',
+        success: function(result) {
+            $('.auth').html(result['response']);
+            $('#auth-input-error').fadeOut(0);
+        }
+    });
+
+}
+
+function auth_input_error_toogle() {
+    console.log($('#auth-input-error')[0].style.display);
+    if ($('#auth-input-error')[0].style.display) {
+      $('#auth-input-error').fadeIn(500);
+    } else {
+      $('#auth-input-error').fadeOut(500);
+    }
+}
+
 function convert() {
     
     obj_from = document.getElementById("converter-unit-from-value");
@@ -26,7 +79,6 @@ function getName(str){
     var uploaded = document.getElementById("fileformlabel");
     uploaded.innerHTML = filename;
 }
-
 
 function news_addform_close() {
 

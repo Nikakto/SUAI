@@ -1,18 +1,44 @@
 from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, JsonResponse
+from django.template.loader import render_to_string
 from django.shortcuts import render, redirect, reverse
+from django.views.decorators.csrf import csrf_exempt
+
+
+import json
+import re
 
 
 from SUAI import const, staff
 from SUAI.staff.forms import *
 
 
-import re
-
-
 def about(request):
     return render(request, 'about.html')
+
+
+@csrf_exempt
+def ajax_login(request):
+
+    response = {'response': 'error'}
+
+    user = authenticate(request, username=request.GET.get('login'), password=request.GET.get('password'))
+
+    if user is not None:
+        login(request, user)
+        response['response'] = 'success'
+        response['html'] = render_to_string('auth.html', request=request)
+
+    return JsonResponse(response)
+
+
+@csrf_exempt
+def ajax_logout(request):
+
+    logout(request)
+    response = {'response': render_to_string('auth.html', request=request)}
+    return JsonResponse(response)
 
 
 def gallery(request):
