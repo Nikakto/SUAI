@@ -6,9 +6,9 @@
         <div class="gallery-items">
             {% for image in images %}
                 <div class="gallery-item">
-                    <a href="{{ image.source.url }}">
-                        <img class="gallery-item-preview" src="{{ image.source.url }}" />
-                    </a>
+                    <img class="gallery-item-preview"
+                         onclick="gallery_viewer('{{ image.source.url }}')"
+                         src="{{ image.source.url }}" />
                 </div>
             {% endfor %}
 
@@ -44,5 +44,13 @@
     {% else %}
         <p class="gallery-empty">Gallery is empty</p>
     {% endif %}
+
+    <div class="gallery-viewer">
+        <div class="gallery-viewer-prev"></div>
+        <div class="gallery-viewer-item">
+            <div class="gallery-viewer-image-placement"></div>
+        </div>
+        <div class="gallery-viewer-next"></div>
+    </div>
 
 {% endblock %}

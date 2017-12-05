@@ -1,5 +1,14 @@
+String.prototype.format = function() {
+  var str = this;
+  for (var i = 0; i < arguments.length; i++) {
+    str = str.replace('%s', arguments[i]);
+  }
+  return str;
+};
+
 $(document).ready(function() {
     $('#auth-input-error').fadeOut(0);
+    $('.gallery-viewer').fadeOut(0);
 });
 
 function ajax_login() {
@@ -65,6 +74,17 @@ function convert() {
     obj_result = document.getElementById("converter-unit-to-value");
     obj_result.value = value*meters_from / meters_to;
     
+}
+
+function gallery_viewer(image) {
+    $('.gallery-viewer').fadeIn(500);
+
+    image_html ='<img class="gallery-viewer-image" onclick="gallery_viewer_next(this)" src="%s" />';
+    $('.gallery-viewer-image-placement').html(image_html.format(image));
+}
+
+function gallery_viewer_next(node) {
+
 }
 
 

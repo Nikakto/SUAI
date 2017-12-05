@@ -230,6 +230,7 @@ header  {
 }
 
 .gallery-items {
+    cursor: pointer;
     display: grid;
     min-height: calc(100% - 90px);
     grid-template-columns: repeat(4, 25%);
@@ -272,7 +273,7 @@ header  {
 
 .gallery-item-preview:hover {
     transform: scale(1.1);
-    z-index: 20;
+    z-index: 5;
 }
 
 .gallery-item-upload {
@@ -423,6 +424,33 @@ header  {
 .gallery-upload-submit {
     width: 300px;
     margin-bottom: 25px;
+}
+
+.gallery-viewer {
+    background-color: rgba(250, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: 15% auto 15%;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 25;
+}
+
+.gallery-viewer-image {
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-viewer-item {
+    margin: auto;
+}
+
+.gallery-viewer-image-placement {
+    height: 10%;
+    position: relative;
+    width: 80%;
 }
 
 .navigate-panel {
