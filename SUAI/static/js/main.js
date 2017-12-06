@@ -78,13 +78,42 @@ function convert() {
 
 function gallery_viewer(image) {
     $('.gallery-viewer').fadeIn(500);
+    document.body.style.setProperty('overflow', 'hidden');
 
     image_html ='<img class="gallery-viewer-image" onclick="gallery_viewer_next(this)" src="%s" />';
     $('.gallery-viewer-image-placement').html(image_html.format(image));
 }
 
-function gallery_viewer_next(node) {
+function gallery_viewer_close(image) {
+    $('.gallery-viewer').fadeOut(500);
+    document.body.style.setProperty('overflow', 'auto');
+}
 
+function gallery_viewer_next(turn) {
+    var items = $('.gallery-item');
+
+    if (turn > 0) {
+        if (items[items.length - 1].children[0].src == $('.gallery-viewer-image')[0].src) {
+            if (items[0].children[0].tagName != 'DIV' && items[items.length - 2].children[0].src == $('.gallery-viewer-image').src) {
+                gallery_viewer_close()
+            }
+        }
+    }
+    else if (turn < 0) {
+        if (items[0].children[0].src == $('.gallery-viewer-image')[0].src) {
+            gallery_viewer_close()
+        }
+    }
+
+    var image_html = '';
+    for (i=0; i<items.length; i++) {
+        if (items[i].children[0].src == $('.gallery-viewer-image')[0].src) {
+            image_html ='<img class="gallery-viewer-image" onclick="gallery_viewer_next(this)" src="%s" />';
+            image_html = image_html.format(items[i+1].children[0].src);
+        }
+    }
+
+    $('.gallery-viewer-image-placement').html(image_html);
 }
 
 

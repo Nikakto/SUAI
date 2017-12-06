@@ -46,11 +46,12 @@
     {% endif %}
 
     <div class="gallery-viewer">
-        <div class="gallery-viewer-prev"></div>
-        <div class="gallery-viewer-item">
+        <div class="gallery-viewer-nav" onclick="gallery_viewer_next(-1);"></div>
+        <div class="gallery-viewer-viewer">
             <div class="gallery-viewer-image-placement"></div>
+            <button class="gallery-viewer-close" type="button" onclick="gallery_viewer_close();">&times</button>
         </div>
-        <div class="gallery-viewer-next"></div>
+        <div class="gallery-viewer-nav" onclick="gallery_viewer_next(1);"></div>
     </div>
 
 {% endblock %}
